@@ -187,7 +187,7 @@ class Client(object):
         """Decrements an integer by the `key`."""
         return self.incr(key, -delta)
 
-    def append(self, key, val):
+    def append(self, key, val, *args, **kwargs):
         """Append the `val` to the end of the existing `key`'s value.
         It works only when there is the key already.
 
@@ -200,7 +200,7 @@ class Client(object):
         else:
             return 1
 
-    def prepend(self, key, val):
+    def prepend(self, key, val, *args, **kwargs):
         """Prepends the `val` to the beginning of the existing `key`'s value.
         It works only when there is the key already.
 
@@ -213,7 +213,7 @@ class Client(object):
         else:
             return 1
 
-    def add(self, key, val, time=0):
+    def add(self, key, val, time=0, *args, **kwargs):
         """Adds a new `key` with the `val`. Almost like `set` method,
         but it stores the value only when the `key` doesn't exist already.
 
@@ -222,7 +222,7 @@ class Client(object):
             return 0
         return self.set(key, val, time)
 
-    def replace(self, key, val, time=0):
+    def replace(self, key, val, time=0, *args, **kwargs):
         """Replaces the existing `key` with `val`. Almost like `set` method,
         but it store the value only when the `key` already exists.
 
@@ -231,7 +231,7 @@ class Client(object):
             return 0
         return self.set(key, val, time)
 
-    def set(self, key, val, time=0):
+    def set(self, key, val, time=0, *args, **kwargs):
         """Sets the `key` with `val`."""
         if not time:
             time = None
@@ -254,7 +254,7 @@ class Client(object):
                 return
             return val
 
-    def get_multi(self, keys):
+    def get_multi(self, keys, *args, **kwargs):
         """Retrieves values of the `keys` at once from the internal
         dictionary.
 
